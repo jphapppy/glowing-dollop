@@ -1,33 +1,35 @@
-var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
+canvas = document.getElementById("myCanvas");
+ctx = canvas.getContext("2d");
+array = ["nasa1.jpg","nasa2.jpg","nasa3.jpg","nasa4.jpg"]
+random_number = Math.floor(Math.random()*4)
 rover_width = 100
 rover_height = 90
 rover_y = 10
 rover_x = 10
-background_image = "mars.jpg"
+background_image = array[random_number]
 rover_image = "rover.png"
 
 
 function add(){
-background_image = new Image();
-background_image.onload = uploadBackground
-background_image.src = background_image
+background_image_tag = new Image();
+background_image_tag.onload = uploadBackground
+background_image_tag.src = background_image
 
-rover_image = new Image();
-rover_image.onload = uploadrover
-rover_image.src = rover_image
+rover_image_tag = new Image();
+rover_image_tag.onload = uploadrover
+rover_image_tag.src = rover_image
 }
 
 function uploadBackground(){
-    ctx.drawImage(background_image, 0, 0, canvas.width, canvas.height)
+    ctx.drawImage(background_image_tag, 0, 0, canvas.width, canvas.height)
 }
 
 function uploadrover(){
-    ctx.drawImage(rover_image, rover_x, rover_y, rover_width, rover_height)
+    ctx.drawImage(rover_image_tag, rover_x, rover_y, rover_width, rover_height)
 }
 window.addEventListener("keydown", my_keydown)
 function my_keydown(e){
-    keyPressed = e.keycode
+    keyPressed = e.keyCode
     console.log(keyPressed)
     if(keyPressed == '38'){
         up()
@@ -89,3 +91,4 @@ function right(){
         uploadBackground()
     }
 }
+
